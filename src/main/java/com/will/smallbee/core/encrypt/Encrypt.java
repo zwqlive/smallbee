@@ -19,16 +19,17 @@ public class Encrypt {
 	
 	public static String encryptMD5(String data){
 		byte[] bytes = encryptMD5(data.getBytes());
-		StringBuffer sb = new StringBuffer();
-		int n=0;		
-		for(int i=0;i<bytes.length;i++){
-			n=bytes[i];
-			if(n<0){
-				n=256+n;
-			}
-			sb.append(Integer.toHexString(n));
+		int i;
+		StringBuffer buf = new StringBuffer("");
+		for (int offset = 0; offset < bytes.length; offset++) {
+			i = bytes[offset];			
+			if (i < 0)
+				i += 256;
+			if (i < 16)
+				buf.append("=");
+			buf.append(Integer.toHexString(i));
 		}
-		return sb.toString();
+		return buf.toString();
 	}
 	
 	public static void main(String[] args){
