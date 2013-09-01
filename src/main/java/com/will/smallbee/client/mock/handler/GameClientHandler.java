@@ -4,7 +4,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.MessageList;
+
 
 public class GameClientHandler extends ChannelInboundHandlerAdapter {
 	private final ByteBuf firstMessage;
@@ -28,7 +28,7 @@ public class GameClientHandler extends ChannelInboundHandlerAdapter {
     }
 
     @Override
-    public void messageReceived(ChannelHandlerContext ctx, MessageList<Object> msgs) throws Exception {
+    public void channelRead(ChannelHandlerContext ctx,Object msgs) throws Exception {
         ctx.write(msgs);
     }
 

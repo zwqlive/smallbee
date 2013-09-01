@@ -88,15 +88,12 @@ public class DBConfig implements Config {
 	public void setConnctionTimeOut(int connctionTimeOut) {
 		this.connctionTimeOut = connctionTimeOut;
 	}
-	@Override
-	public String getVersion() {		
+	public String getVersion() {	
 		return "";
 	}
-	@Override
 	public void validate() {
 				
 	}
-	@Override
 	public boolean getIsDebug() {
 		return false;
 	}

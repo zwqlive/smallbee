@@ -2,7 +2,6 @@ package com.will.smallbee.server.hander;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.MessageList;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -14,7 +13,7 @@ public class GameServerSimpleHandler extends ChannelInboundHandlerAdapter {
     		GameServerSimpleHandler.class.getName());
 
     @Override
-    public void messageReceived(ChannelHandlerContext ctx, MessageList<Object> msgs) throws Exception {
+    public void channelRead(ChannelHandlerContext ctx, Object msgs) throws Exception {
         ctx.write(msgs);
     }
 

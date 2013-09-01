@@ -34,7 +34,7 @@ public class GameClientMock {
 			}
 		});
     	try {
-			ChannelFuture future = bootstrap.connect(host, port).sync();
+			ChannelFuture future = bootstrap.connect(host, port).sync();			
 			future.channel().closeFuture().sync();
 		} catch (InterruptedException e) {			
 			throw e;

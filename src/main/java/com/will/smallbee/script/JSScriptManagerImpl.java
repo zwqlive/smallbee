@@ -37,7 +37,6 @@ public class JSScriptManagerImpl implements IScriptEngine {
 	 *            如果为空,则使用JSScriptMangerImpl的charset
 	 * @exception RuntimeException
 	 */
-	@Override
 	public Object runScript(Map<String, Object> binding, String scriptFile, String charset) {
 		String content = null;
 		try {
@@ -55,7 +54,6 @@ public class JSScriptManagerImpl implements IScriptEngine {
 	 * 
 	 * @exception RuntimeException
 	 */
-	@Override
 	public Object runScript(Map<String, Object> binding, String scriptContent) {
 		try {
 			if (binding == null || binding.isEmpty()) {
@@ -131,4 +129,6 @@ public class JSScriptManagerImpl implements IScriptEngine {
 			throw new RuntimeException(exp, se);
 		}
 	}
+
+	
 }
