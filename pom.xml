@@ -53,5 +53,26 @@
 			<artifactId>spring-context</artifactId>
 			<version>3.2.3.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>hibernate-c3p0</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>4.1</version>
+			<scope>system</scope>
+			<systemPath>${basedir}\lib\hibernate-c3p0-4.1.2.Final.jar</systemPath>			
+		</dependency>
+		<dependency>
+			<groupId>asm-4.0</groupId>
+			<artifactId>asm-4.0</artifactId>
+			<version>4.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}\lib\asm-all-4.0.jar</systemPath>			
+		</dependency>
+		<dependency>
+			<groupId>cglib-3.0</groupId>
+			<artifactId>cglib-3.0</artifactId>
+			<version>3。0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}\lib\cglib-3.0.jar</systemPath>			
+		</dependency>
 	</dependencies>
 </project>
