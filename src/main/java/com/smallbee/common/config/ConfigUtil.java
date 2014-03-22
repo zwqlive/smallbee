@@ -19,8 +19,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.smallbee.script.IScriptEngine;
-import com.smallbee.script.JSScriptManagerImpl;
+import com.smallbee.jsscript.IScriptEngine;
+import com.smallbee.jsscript.JSScriptManagerImpl;
 
 /**
  * 配置相关的工具类
