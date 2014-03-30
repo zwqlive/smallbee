@@ -12,7 +12,7 @@ import com.smallbee.core.common.Loggers;
  * @author will
  * 
  */
-public abstract class TransObject {
+public abstract class TransportObject implements ITransportable {
 	
 	private static final int NULL_OBJECT_FLAG=-1;
 	private static final int NOT_NULL_OBJECT_FLAG=-2;
@@ -56,7 +56,7 @@ public abstract class TransObject {
 		}
 	}
 	
-	public void writeObject(ByteBuf byteBuf, TransObject transObj){
+	public void writeObject(ByteBuf byteBuf, ITransportable transObj){
 		if(transObj == null){
 			byteBuf.writeInt(NULL_OBJECT_FLAG);
 		}else{
@@ -100,12 +100,12 @@ public abstract class TransObject {
 		}
 	}
 	
-	public TransObject readObject(ByteBuf byteBuf, Class<? extends TransObject> clasz){
+	public ITransportable readObject(ByteBuf byteBuf, Class<? extends ITransportable> clasz){
 		int objFlag = byteBuf.readInt();
 		if(objFlag == NULL_OBJECT_FLAG){
 			return null;
 		}else{
-			TransObject object = null;
+			ITransportable object = null;
 			try {
 				object = clasz.newInstance();
 				object.read(byteBuf);
