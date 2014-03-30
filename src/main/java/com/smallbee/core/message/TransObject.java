@@ -1,9 +1,10 @@
 package com.smallbee.core.message;
 
+import io.netty.buffer.ByteBuf;
+
 import java.io.UnsupportedEncodingException;
 
-import core.common.Loggers;
-import io.netty.buffer.ByteBuf;
+import com.smallbee.core.common.Loggers;
 
 /**
  * 消息传输对象

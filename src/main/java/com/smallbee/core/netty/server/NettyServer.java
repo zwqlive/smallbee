@@ -8,8 +8,9 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import core.communicate.config.ServerConfig;
-import core.communicate.netty.handler.ServerChannelHandler;
+
+import com.smallbee.core.netty.config.ServerConfig;
+import com.smallbee.core.netty.handler.ServerChannelHandler;
 
 public class NettyServer {
 	

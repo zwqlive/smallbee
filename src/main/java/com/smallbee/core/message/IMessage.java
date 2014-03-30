@@ -2,7 +2,7 @@ package com.smallbee.core.message;
 
 import java.util.Collection;
 
-import core.communicate.session.ISession;
+import com.smallbee.core.netty.session.ISession;
 
 /**
  * 消息接口
