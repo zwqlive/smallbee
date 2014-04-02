@@ -3,7 +3,7 @@ package com.smallbee.core.message;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import com.smallbee.core.netty.session.ISession;
+import com.smallbee.core.session.ISession;
 
 /**
  * 抽象的消息类
