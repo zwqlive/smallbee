@@ -3,10 +3,11 @@ package com.smallbee.db;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
-import javax.script.ScriptException;
+import javax.script.*;
 
 import com.smallbee.common.config.ConfigUtil;
 import com.smallbee.db.config.DBConfig;
@@ -24,24 +25,22 @@ public class PoolManager {
 	public static PoolManager getInstance(){
 		return instance;
 	}
-	private PoolManager(){
-		try {
-			loadDrivers();
-		} catch (Exception e) {
-			throw new IllegalStateException(e);
-		}
+	private PoolManager(){}
+	
+	
+	public void initPool(List<String> dbConfigNames) throws IOException, ScriptException{
+		loadDrivers(dbConfigNames);
 		for(DBConfig config : dbConfigs){
 			CreatePool(config);
 		}
 	}
 	
-	private void loadDrivers() throws ScriptException, IOException{
-		DBConfig dbConfig = new DBConfig();
-		ConfigUtil.loadJsConfig(dbConfig, "log_server_db_config.js");
-		dbConfigs.add(dbConfig);
-		DBConfig dbConfig2 = new DBConfig();
-		ConfigUtil.loadJsConfig(dbConfig2, "manage_server_db_config.js");
-		dbConfigs.add(dbConfig2);
+	public void loadDrivers(List<String> configFileNames) throws IOException, ScriptException{
+		for(String fileName : configFileNames){
+			DBConfig dbConfig = new DBConfig();
+			ConfigUtil.loadJsConfig(dbConfig, fileName);
+			dbConfigs.add(dbConfig);
+		}
 	}
 	
 	private void CreatePool(DBConfig dbConfig){

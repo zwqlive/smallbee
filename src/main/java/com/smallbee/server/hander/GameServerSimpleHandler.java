@@ -1,16 +1,16 @@
 package com.smallbee.server.hander;
 
-import java.nio.charset.Charset;
-
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
+
+import java.nio.charset.Charset;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class GameServerSimpleHandler extends ChannelInboundHandlerAdapter {
+public class GameServerSimpleHandler extends ChannelHandlerAdapter {
 
     private static final Logger logger = LogManager.getLogger(
     		GameServerSimpleHandler.class.getName());

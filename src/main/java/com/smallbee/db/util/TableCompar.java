@@ -1,10 +1,6 @@
 package com.smallbee.db.util;
 
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -204,8 +200,8 @@ public class TableCompar {
 			Connection conn = DBUtils.createConnection("jdbc:mysql://192.168.1.138:3306/gamelog?connectTimeout", "game", "game");
 			Connection conn2 = DBUtils.createConnection("jdbc:mysql://192.168.1.120:5849/gamelog?connectTimeout", "game", "game");
 			
-			List<String> tableNames = DBUtils.getTableName(conn);
-			List<String> tableNames2 = DBUtils.getTableName(conn2);
+//			List<String> tableNames = DBUtils.getTableName(conn);
+//			List<String> tableNames2 = DBUtils.getTableName(conn2);
 //			TableCompar compar=new TableCompar();
 			List<ColumnInfo> columnDefine = DBUtils.getColumnDefine(conn, "rolestate");
 			List<ColumnInfo> columnDefine2 = DBUtils.getColumnDefine(conn2, "rolestate");
