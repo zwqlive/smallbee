@@ -20,9 +20,9 @@ import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 
 import com.smallbee.core.script.loader.ScriptLoader;
+//	private ScriptClassLoader scriptClassLoader;
 
 public class CommonCompiler implements ICompiler{
-//	private ScriptClassLoader scriptClassLoader;
 	private String classpath = "";
 	private String sourcepath="script";
 	private String classFileOutPath="script-bin";
@@ -73,7 +73,6 @@ public class CommonCompiler implements ICompiler{
 		
 		
 		File entrySourceFile = new File("script/serverscript/ScriptEntry.java");
-
 		BufferedReader reader = null;
 		try {
 			reader = new BufferedReader(new InputStreamReader(new FileInputStream(entrySourceFile),Charset.forName("utf-8")));
