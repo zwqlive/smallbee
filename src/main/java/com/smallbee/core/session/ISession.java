@@ -15,4 +15,8 @@ public interface ISession {
 	void write(IMessage message);
 	
 	SocketAddress remoteAddress();
+	
+	void setAttribute(String key,Object obj);
+	
+	Object getAttribute(String key);
 }

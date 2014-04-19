@@ -15,7 +15,7 @@ public class NettySession implements ISession{
 	
 	public NettySession(ChannelHandlerContext ctx){
 		if(ctx == null){
-			throw new IllegalArgumentException("ctx can not be null");
+			throw new NullPointerException("ctx can not be null");
 		}
 		this.handlerContext = ctx;
 	}
@@ -30,6 +30,18 @@ public class NettySession implements ISession{
 	@Override
 	public SocketAddress remoteAddress() {		
 		return handlerContext.channel().remoteAddress();
+	}
+
+	@Override
+	public void setAttribute(String key, Object obj) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Object getAttribute(String key) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

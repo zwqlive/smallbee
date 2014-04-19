@@ -12,16 +12,12 @@ import com.smallbee.core.session.ISession;
  *
  */
 public abstract class Message extends TransportObject implements IMessage{
-	private int id;
 	private long sendRoleId;
 	private Collection<Long> receiveRoles = new ArrayList<Long>();
 	private ISession session;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	
+	public abstract int getId();
+	
 	public long getSendRoleId() {
 		return sendRoleId;
 	}

@@ -1,7 +1,5 @@
 package com.smallbee.server;
 
-import com.smallbee.server.hander.GameServerSimpleHandler;
-
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -13,6 +11,10 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 
+import com.smallbee.core.netty.codec.ServerProtocolFactory;
+import com.smallbee.server.handler.GameServerSimpleHandler;
+import com.sun.tools.javac.main.JavacOption.Option;
+
 public class GameServer {
 	 private final int port;
 
@@ -21,31 +23,29 @@ public class GameServer {
 	    }
 
 	    public void run() throws Exception {
-	        // Configure the server.
 	        EventLoopGroup bossGroup = new NioEventLoopGroup();
 	        EventLoopGroup workerGroup = new NioEventLoopGroup();
 	        try {
 	            ServerBootstrap b = new ServerBootstrap();
 	            b.group(bossGroup, workerGroup)
 	             .channel(NioServerSocketChannel.class)
+	             .option(ChannelOption.TCP_NODELAY, true)
 	             .option(ChannelOption.SO_BACKLOG, 100)
+	             .option(ChannelOption.SO_KEEPALIVE, true)
+	             .option(ChannelOption.SO_TIMEOUT, 3000)
 	             .handler(new LoggingHandler(LogLevel.INFO))
 	             .childHandler(new ChannelInitializer<SocketChannel>() {
 	                 @Override
 	                 public void initChannel(SocketChannel ch) throws Exception {
-	                     ch.pipeline().addLast(
-	                             //new LoggingHandler(LogLevel.INFO),
-	                             new GameServerSimpleHandler());
+	                	 ch.pipeline().addFirst(ServerProtocolFactory.getEncoder());
+	                	 ch.pipeline().addFirst(ServerProtocolFactory.getDecoder());
+	                     ch.pipeline().addLast(new GameServerSimpleHandler());
 	                 }
 	             });
 
-	            // Start the server.
 	            ChannelFuture f = b.bind(port).sync();
-
-	            // Wait until the server socket is closed.
 	            f.channel().closeFuture().sync();
 	        } finally {
-	            // Shut down all event loops to terminate all threads.
 	            bossGroup.shutdownGracefully();
 	            workerGroup.shutdownGracefully();
 	        }

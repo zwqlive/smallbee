@@ -16,10 +16,7 @@ public interface IMessage extends ITransportable{
 	 * @return
 	 */
 	int getId();
-	/**
-	 * 设置id
-	 */
-	void setId(int id);
+	
 	/**
 	 * 发送者id
 	 * @return

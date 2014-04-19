@@ -13,7 +13,7 @@ import com.smallbee.core.message.Message;
 public class ServerProtocolEncoder extends MessageToByteEncoder<IMessage>{
 	
 	public ServerProtocolEncoder(){
-		encoder = new EmbeddedChannel(ZlibCodecFactory.newZlibEncoder(2));
+		encoder = new EmbeddedChannel(ZlibCodecFactory.newZlibEncoder(6));
 	}
 	
 	private EmbeddedChannel encoder;
@@ -48,6 +48,7 @@ public class ServerProtocolEncoder extends MessageToByteEncoder<IMessage>{
 				Loggers.MSG_LOGGER.error("发送的消息数据量过大，msgId="+msg.getId());
 				return;
 			}
+			out.writeInt(msg.getId());
 			if(size>zipSize){
 				//压缩消息
 				size = 0x10000000|size;
